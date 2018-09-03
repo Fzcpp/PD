@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Reflection;
 using LuaInterface;
+using UnityEngine.Rendering;
 
 
 public class Client : MonoBehaviour 
@@ -111,7 +112,7 @@ public class Client : MonoBehaviour
                 GameObject go = new GameObject();
                 go.AddComponent<SkinnedMeshRenderer>();
                 SkinnedMeshRenderer sm = go.GetComponent<SkinnedMeshRenderer>();
-                sm.castShadows = false;
+                sm.shadowCastingMode = ShadowCastingMode.Off;
                 sm.receiveShadows = false;
             }
 
