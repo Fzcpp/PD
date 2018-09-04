@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using LuaInterface;
 using UnityEngine;
 
 public class TestBBBB : MonoBehaviour {
@@ -13,11 +14,16 @@ public class TestBBBB : MonoBehaviour {
 		node.Parameter= new TestDataParameter("Hello", 3);
 		node.LuaScript = new LuaScript(new ScriptFile("D:\\aaa.txt"));
 
-		object obj=node.LuaScript.CallFunction(node.Parameter, "GetRef", null);
-
-		 
-		node.LuaScript.CallLuaScript();
-	}
+        object result =node.LuaScript.CallFunction(node.Parameter, "GetValue", new Object[]{});
+        
+	    node.LuaScript.CallLuaScript();
+        /* Program pro = new Program();
+        object[] paras = new object[] { 2344, 265 };
+       
+        node.LuaScript.CallFunction(pro, "Sub", paras);
+        
+        */
+    }
 	
 	void Update () {
 		

@@ -3,11 +3,15 @@
 
 	public T Value;
 
-	public Parameter<T> GetRef()
+	public object  GetRef()
 	{
 		return this;
 	}
 
+    public T GetValue()
+    {
+        return Value;
+    }
 
 }
 

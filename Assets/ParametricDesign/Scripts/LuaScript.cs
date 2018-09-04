@@ -1,10 +1,11 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using LuaInterface;
 
 public class LuaScript
 {
 
-	private readonly LuaState _luaState = new LuaState();
+	public  LuaState _luaState = new LuaState();
 
 	public ScriptFile _scriptFile;
 
@@ -15,20 +16,17 @@ public class LuaScript
 
 	public string GetArgumentsScript(object[] arguments)
 	{
-		string allParams = "";
+		string allParams = "(";
 		if (arguments != null)
 		{
 			for (int i = 0; i < arguments.Length; i++)
-			{
-				if (i == 0)
-					allParams += "(";
+			{		
 				allParams += arguments[i];
 				if (i < arguments.Length - 1)
 					allParams += ",";
-				else allParams += ")";
 			}
 		}
-
+	    allParams += ")";
 		return allParams;
 	}
 
@@ -54,13 +52,14 @@ public class LuaScript
 	// 不能调用静态方法
 	public object CallFunction(object csObject, string funcName, object[] arguments)
 	{
-		_luaState.DoString(_scriptFile.getFileInfo());
 		string getRefFunc = "GetRef";
 		_luaState.RegisterFunction(getRefFunc, csObject, csObject.GetType().GetMethod(getRefFunc));
 
 		_luaState.DoString("csObj=GetRef()");
+	    
 		string allParams = GetArgumentsScript(arguments);
-		_luaState.DoString(" result=csObj:" + funcName + allParams);
+	    string func = funcName + allParams;
+        _luaState.DoString(" result=csObj:" + func);
 
 		return _luaState["result"];
 	}

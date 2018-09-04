@@ -11,20 +11,17 @@ public class LuaCallCSharp
     private ScriptFile scriptFile;
     public string GetArgumentsScript(object[] arguments)
     {
-        string allParams = "";
+        string allParams = "(";
         if (arguments != null)
         {
             for (int i = 0; i < arguments.Length; i++)
-            {
-                if (i == 0)
-                    allParams += "(";
+            {      
                 allParams += arguments[i];
                 if (i < arguments.Length - 1)
-                    allParams += ",";
-                else allParams += ")";
+                    allParams += ",";          
             }
         }
-        
+        allParams += ")";
         return allParams;
     }
     
