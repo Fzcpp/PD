@@ -7,17 +7,16 @@ using UnityEngine;
 public class ScriptFile
 {
     private string fileName; // 文本文件名字
-    private string directory= "./TempLuaScripts/";
+    //private string directory= "./TempLuaScripts/";
     
     public ScriptFile(string fileName)
     {
         this.fileName = fileName;
         if (File.Exists(fileName) == false)
         {
-            FileStream fs = new FileStream(directory+fileName, 
+            FileStream fs = new FileStream(fileName, 
                 FileMode.OpenOrCreate, FileAccess.ReadWrite);
             fs.Close();
-            
         }
     }
 
@@ -28,21 +27,21 @@ public class ScriptFile
 
     public string getFileInfo()
     {
-        return File.ReadAllText(directory+fileName);  
+        return File.ReadAllText(fileName);  
     }
 
     // 向脚本文件添加代码
     public void AddScript(string script)
     {
-        File.AppendAllText(directory+fileName,script+"\r\n");
+        File.AppendAllText(fileName,script+"\r\n");
          
     }
     // 清空脚本文件
     public void ClearAllScripts()
     {
-        File.Delete(directory + fileName);
+        File.Delete(fileName);
        
-        FileStream fs = new FileStream(directory + fileName,
+        FileStream fs = new FileStream(fileName,
             FileMode.OpenOrCreate, FileAccess.ReadWrite);
         fs.Close();
     }
