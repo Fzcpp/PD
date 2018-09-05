@@ -23,6 +23,8 @@ public class TestBBBB : MonoBehaviour {
         node.LuaScript.CallFunction(pro, "Sub", paras);
         
         */
+
+		Debug.Log((node.Parameter as Parameter<TestData>).Value.AAA);
     }
 	
 	void Update () {
