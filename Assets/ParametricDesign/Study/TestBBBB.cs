@@ -7,22 +7,21 @@ public class TestBBBB : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//Config.AddMethodMapPair("",Update);
+		
 
 		Node node = new Node();
 		node.Parameter= new TestDataParameter("Hello", 3);
 		node.LuaScript = new LuaScript(new ScriptFile("D:\\aaa.txt"));
-
+		Config.AddMethodMapPair("GetSum", ((TestDataParameter)node.Parameter).GetSum);
 		object obj=node.LuaScript.CallFunction(node.Parameter, "GetRef", null);
-
-		 
+		Debug.Log(node.LuaScript._luaState["csObj"]);
 		node.LuaScript.CallLuaScript();
-	}
-	
-	void Update () {
-		
+
+		Debug.Log(((TestDataParameter)node.Parameter).Value.BBB);
 	}
 
 	
+
+
 
 }
