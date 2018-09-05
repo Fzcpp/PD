@@ -2,10 +2,10 @@
 -target:library
 -nowarn:0169
 -langversion:7
--out:"D:/Unity Projects/PD/Temp/UniRx.Async.Editor.dll"
+-out:"E:/unity Coding/learn/ULua/PD/Temp/UniRx.Async.Editor.dll"
 -nostdlib
 -unsafe
--r:"D:/Unity Projects/PD/Library/ScriptAssemblies/UniRx.Async.dll"
+-r:"E:/unity Coding/learn/ULua/PD/Library/ScriptAssemblies/UniRx.Async.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -71,6 +71,9 @@
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\Managed/Unity.Locator.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll"
@@ -85,11 +88,11 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2018.2.6f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
--r:"C:/Users/Scott Meyers/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll"
--r:"C:/Users/Scott Meyers/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll"
--r:"C:/Users/Scott Meyers/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll"
+-r:"E:/unity Coding/learn/ULua/PD/Assets/Plugins/Debuger.dll"
+-r:C:/Users/sunzhaohenan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll
+-r:C:/Users/sunzhaohenan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
+-r:C:/Users/sunzhaohenan/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll
 -r:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
--r:"D:/Unity Projects/PD/Assets/Plugins/Debuger.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll"
 -r:"C:\Program Files\Unity\Hub\Editor\2018.2.6f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll"
@@ -302,7 +305,7 @@
 -d:ENABLE_BURST_AOT
 -d:UNITY_TEAM_LICENSE
 -d:ENABLE_VSTU
--i:"D:/Unity Projects/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/SplitterGUILayout.cs"
--i:"D:/Unity Projects/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/UniTaskTrackerTreeView.cs"
--i:"D:/Unity Projects/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/UniTaskTrackerWindow.cs"
+-i:"E:/unity Coding/learn/ULua/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/SplitterGUILayout.cs"
+-i:"E:/unity Coding/learn/ULua/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/UniTaskTrackerTreeView.cs"
+-i:"E:/unity Coding/learn/ULua/PD/Assets/Plugins/UniRx/Scripts/Async/Editor/UniTaskTrackerWindow.cs"
 -v:0
