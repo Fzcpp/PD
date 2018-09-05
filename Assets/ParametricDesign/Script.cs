@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using LuaInterface;
 using System.Collections.Generic;
-using LuaInterface;
-using UnityEngine;
+
+//TODO: 1） lua里的参数名与Parameter的Value对应
+//TODO: 2） lua里的参数名与Parameter的Value对应
 
 namespace JL
 {
