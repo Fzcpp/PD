@@ -1,7 +1,9 @@
-﻿public class Parameter<T>
+﻿using UniRx;
+
+public class Parameter<T>
 {
 
-	public T Value;
+	public IReactiveProperty<T> Value;
 
 	public object  GetRef()
 	{
@@ -12,11 +14,6 @@
 	{
 		return op1 + op2;
 	}
-
-    public T GetValue()
-    {
-        return Value;
-    }
 
 }
 
@@ -35,8 +32,8 @@ public class TestDataParameter : Parameter<TestData>
 	}
 	public TestDataParameter(string aaa,int bbb)
 	{
-		Value = new TestData();
-		Value.AAA = aaa;
-		Value.BBB = bbb;
+		Value = new ReactiveProperty<TestData>(new TestData());
+		Value.Value.AAA = aaa;
+		Value.Value.BBB = bbb;
 	}
 }

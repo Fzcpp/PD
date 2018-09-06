@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using UniRx;
 
 namespace JL
 {
@@ -6,27 +6,37 @@ namespace JL
 	public class Node
 	{
 
-		public string Name;
+		public IReactiveDictionary<string, Parameter> Parameters = new ReactiveDictionary<string, Parameter>();
 
-		public Dictionary<string, Parameter> Parameters;
+		public IReactiveProperty<string> Script = new StringReactiveProperty();
 
-		public Script Script;
+		private readonly Script _script;
 
-		public Node(string name)
+		public Node()
 		{
-			Name = name;
-			Parameters = new Dictionary<string, Parameter>();
-			Script = new Script(Parameters);
+			_script = new Script(Parameters);
+			Script.Subscribe(x => { _script.Content = x; });
 		}
 
-		public void AddParameter(string name, Parameter parameter)
+		public void Execute()
 		{
+			_script.Execute();
+		}
 
+		public bool AddParameter(string name, Parameter parameter)
+		{
+			if (Parameters.ContainsKey(name))
+			{
+				return false;
+			}
+
+			Parameters.Add(name, parameter);
+			return true;
 		}
 
 		public void RemoveParameter(string name)
 		{
-
+			Parameters.Remove(name);
 		}
 
 	}

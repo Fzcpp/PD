@@ -17,7 +17,7 @@ public class TestBBBB : MonoBehaviour {
 		Debug.Log(node.LuaScript._luaState["csObj"]);
 		node.LuaScript.CallLuaScript();
 
-		Debug.Log(((TestDataParameter)node.Parameter).Value.BBB);
+		Debug.Log(((TestDataParameter)node.Parameter).Value.Value.BBB);
 	}
 
 	

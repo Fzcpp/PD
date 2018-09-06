@@ -9,10 +9,23 @@
  * Lua脚本中，新加一行 aaa=xx_aaa.value
  */
 
+using UniRx;
+
 namespace JL
 {
 	public abstract class Parameter
 	{
+
+		public IReactiveProperty<Parameter> Source = new ReactiveProperty<Parameter>();
+		public IReactiveCollection<Parameter> Targets = new ReactiveCollection<Parameter>();
+		public IReactiveProperty<object> Value = new ReactiveProperty<object>();
+
+		public void SetSource(Parameter parameter)
+		{
+			Source.Value?.Targets.Remove(this);
+			parameter?.Targets.Add(this);
+			Source.Value = parameter;
+		}
 
 		public object GetReference()
 		{
@@ -23,6 +36,6 @@ namespace JL
 
 	public class Parameter<T> : Parameter
 	{
-		public T Value;
+		public new IReactiveProperty<T> Value => base.Value as IReactiveProperty<T>;
 	}
 }

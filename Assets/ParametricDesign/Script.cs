@@ -9,13 +9,13 @@ namespace JL
 	public class Script
 	{
 
-		private Dictionary<string, Parameter> _parameters;
+		private IDictionary<string, Parameter> _parameters;
 
 		private readonly LuaState _luaState = new LuaState();
 
 		public string Content;
 
-		public Script(Dictionary<string, Parameter> parameters)
+		public Script(IDictionary<string, Parameter> parameters)
 		{
 			_parameters = parameters;
 		}

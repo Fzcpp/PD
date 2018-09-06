@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace JL
 {
+
 	public class MethodRegister
 	{
+
 		public Dictionary<string, Delegate> MethodMap = new Dictionary<string, Delegate>();
 
 		public Delegate GetDelegate(string name)
@@ -52,14 +54,11 @@ namespace JL
 			MethodMap.Add(name, funcition);
 		}
 
-		public void AddMethodMapPairFunc<T1, T2, T3, T4, TResult>(string name, Func<T1, T2, T3, T4, TResult> funcition)
+		public void AddMethodMapPair<T1, T2, T3, T4, TResult>(string name, Func<T1, T2, T3, T4, TResult> funcition)
 		{
 			MethodMap.Add(name, funcition);
 		}
 
-		public void AddMethodMapPair<T1, T2, T3, T4, T5, TResult>(string name, Func<T1, T2, T3, T4, T5, TResult> funcition)
-		{
-			MethodMap.Add(name, funcition);
-		}
 	}
+
 }
