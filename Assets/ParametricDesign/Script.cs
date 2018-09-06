@@ -20,6 +20,21 @@ namespace JL
 			_parameters = parameters;
 		}
 
+	    public void test(string name )
+	    {
+	        string getRefFunc = "GetReference";
+	        Parameter parameter = _parameters[name];
+	        _luaState.RegisterFunction(getRefFunc, parameter, parameter.GetType().GetMethod(getRefFunc));
+
+            string objName = name + "_obj"; // 对象名字为 name_obj 的形式
+            _luaState.DoString(objName+"= "+getRefFunc+"()");
+
+	       
+	        _luaState.DoString("print(" + objName + ".num)");
+	        _luaState.DoString("print(" +objName+ ".Value)");
+            string valName = name + "_value";// 变量名字用name_value表示 
+	        _luaState.DoString(valName + "=" + objName + ".Value.Value " );
+	    }
 		public void Execute()
 		{
 			_luaState.DoString(Content);

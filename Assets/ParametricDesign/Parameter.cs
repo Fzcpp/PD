@@ -32,6 +32,7 @@ namespace JL
 			return this;
 		}
 
+	    public int num = 10;
 	}
 
 	public class Parameter<T> : Parameter
