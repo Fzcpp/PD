@@ -34,6 +34,7 @@ public class TestBBBB : MonoBehaviour {
         Script script=new Script(parameters);
         script.test("first");
 
+        print("Value : "+script._luaState["value"]);
     }
 
 	

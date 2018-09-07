@@ -33,6 +33,15 @@ namespace JL
 		}
 
 	    public int num = 10;
+        public IReactiveProperty<object> GetValue()
+        {
+            return Value;
+        }
+
+	    public object GetValue_Value()
+	    {
+	        return Value.Value;
+	    }
 	}
 
 	public class Parameter<T> : Parameter

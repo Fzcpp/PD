@@ -11,7 +11,7 @@ namespace JL
 
 		private IDictionary<string, Parameter> _parameters;
 
-		private readonly LuaState _luaState = new LuaState();
+		public readonly LuaState _luaState = new LuaState();
 
 		public string Content;
 
@@ -31,9 +31,15 @@ namespace JL
 
 	       
 	        _luaState.DoString("print(" + objName + ".num)");
-	        _luaState.DoString("print(" +objName+ ".Value)");
+            // 这里直接使用.Value 只会获得一个空引用，原因不明
+	        _luaState.DoString("value=" +objName+ ":GetValue()  ");
+	        _luaState.DoString("print('Value')");
+	        _luaState.DoString("print(value)");
+
             string valName = name + "_value";// 变量名字用name_value表示 
-	        _luaState.DoString(valName + "=" + objName + ".Value.Value " );
+	        _luaState.DoString("print('Value.Value :')");
+	        _luaState.DoString(valName + "=" + objName + ":GetValue_Value() ");
+	        _luaState.DoString("print(" + valName + ")");
 	    }
 		public void Execute()
 		{
