@@ -9,7 +9,7 @@ public class testLuaCallCS : MonoBehaviour {
 		LuaCallCSharp callCS=new LuaCallCSharp();
          
 	    Program pro = new Program();
-	    pro.GetRef();
+	    //pro.GetRef();
         string script = "";
         object[] arguments=null;
 	   

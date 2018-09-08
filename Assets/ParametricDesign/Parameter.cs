@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System;
+using UniRx;
 
 namespace JL
 {
@@ -17,7 +18,7 @@ namespace JL
 			Source.Value = parameter;
 		}
 
-		public object GetRef()
+	    public object GetRef()
 		{
 			return this;
 		}
