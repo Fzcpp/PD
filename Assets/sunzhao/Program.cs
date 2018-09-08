@@ -40,12 +40,3 @@ interface ICSObject
       
     }
 
-
-
-public static class AAA
-{
-    public static object GetRef(this object obj)
-    {
-        return obj;
-    }
-}

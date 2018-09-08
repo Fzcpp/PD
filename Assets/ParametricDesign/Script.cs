@@ -62,21 +62,27 @@ namespace JL
 
 		private void UnregisterAoPackage(AoPackage aoPackage)
 		{
+		    string getRef = "GetRef_" + aoPackage.Name;
+		    _luaState.DoString(getRef + "=nil");
+		    _luaState.DoString(aoPackage.Name + "=nil");
 
-		}
+        }
 
 		private void UnregisterParameter(string name)
 		{
-
+		    string getRef = "GetRef_" + name;
+		    _luaState.DoString(getRef + "=nil");
+		    _luaState.DoString(name + "=nil");
 		}
 
-		private void OnAddParameter(DictionaryAddEvent<string, Parameter> parameterAddEvent)
+        private void OnAddParameter(DictionaryAddEvent<string, Parameter> parameterAddEvent)
 		{
 			RegisterParameter(parameterAddEvent.Key, parameterAddEvent.Value);
 		}
 
 		private void OnRemoveParameter(DictionaryRemoveEvent<string, Parameter> parameterRemoveEvent)
 		{
+		    UnregisterParameter(parameterRemoveEvent.Key);
 
 		}
 
@@ -87,7 +93,7 @@ namespace JL
 
 		private void OnRemoveAoPackage(CollectionRemoveEvent<AoPackage> aoPackageRemoveEvent)
 		{
-
+            UnregisterAoPackage(aoPackageRemoveEvent.Value);
 		}
 
 		public void Dispose()
