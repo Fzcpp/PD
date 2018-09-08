@@ -15,7 +15,8 @@ namespace JL
 
 		public void RemoveNode(Node node)
 		{
-			Nodes.Remove(node);
+		    node.Dispose();
+            Nodes.Remove(node);
 		}
 
 	}

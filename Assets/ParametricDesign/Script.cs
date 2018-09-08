@@ -1,5 +1,7 @@
-﻿using LuaInterface;
+﻿using System;
+using LuaInterface;
 using System.Collections.Generic;
+using UniRx;
 
 namespace JL
 {
@@ -7,16 +9,94 @@ namespace JL
 	public class Script
 	{
 
-		private IDictionary<string, Parameter> _parameters;
+		private IReactiveDictionary<string, Parameter> _parameters;
 
 		public readonly LuaState _luaState = new LuaState();
 
 		public string Content;
 
-		public Script(IDictionary<string, Parameter> parameters)
+	    #region temp
+
+	    private List<IDisposable> _disposables;
+
+        #endregion
+
+        public Script(IReactiveDictionary<string, Parameter> parameters)
 		{
 			_parameters = parameters;
+		    _disposables.Add( _parameters.ObserveAdd().Subscribe(OnAddParameter));
+		    _disposables.Add(_parameters.ObserveRemove().Subscribe(OnRemoveParameter));
+		    _disposables.Add(AoManager.Instance.AoPackages.ObserveAdd().Subscribe(OnAddAoPackage));
+		    _disposables.Add(AoManager.Instance.AoPackages.ObserveRemove().Subscribe(OnRemoveAoPackage));
+		    RegisterInitialize();
 		}
+
+	    private void RegisterInitialize()
+	    {
+	        foreach (var aoPackage in AoManager.Instance.AoPackages)
+            {
+                RegisterAoPackage(aoPackage);
+            }
+
+            foreach (var pair in _parameters)
+            {
+                RegisterParameter(pair.Key,pair.Value);
+            }
+        }
+
+        private void RegisterAoPackage(AoPackage aoPackage)
+        {
+            string getRef = "GetRef_" + aoPackage.Name;
+            _luaState.RegisterFunction(getRef, aoPackage,
+                aoPackage.GetType().GetMethod("GetRef"));
+            _luaState.DoString(aoPackage.Name + "=" + getRef + "()");
+        }
+
+	    private void RegisterParameter(string name, Parameter parameter)
+	    {
+	        string getRef = "GetRef_" + name;
+	        _luaState.RegisterFunction(getRef, parameter,
+	            parameter.GetType().GetMethod("GetRef"));
+	        _luaState.DoString(name + "=" + getRef + "()");
+	    }
+
+        private void UnregisterAoPackage(AoPackage aoPackage)
+	    {
+
+	    }
+
+	    private void UnregisterParameter(string name)
+	    {
+
+	    }
+
+	    private void OnAddParameter(DictionaryAddEvent<string,Parameter> parameterAddEvent)
+	    {
+            RegisterParameter(parameterAddEvent.Key,parameterAddEvent.Value);
+	    }
+
+	    private void OnRemoveParameter(DictionaryRemoveEvent<string, Parameter> parameterRemoveEvent)
+	    {
+
+	    }
+
+	    private void OnAddAoPackage(CollectionAddEvent<AoPackage> aoPackageAddEvent)
+	    {
+            RegisterAoPackage(aoPackageAddEvent.Value);
+	    }
+
+	    private void OnRemoveAoPackage(CollectionRemoveEvent<AoPackage> aoPackageRemoveEvent)
+	    {
+
+	    }
+
+	    public void Dispose()
+	    {
+	        foreach (var disposable in _disposables)
+	        {
+	            disposable.Dispose();
+            }
+	    }
 
 	    public void test(string name )
 	    {

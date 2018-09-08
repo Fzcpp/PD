@@ -13,7 +13,7 @@ public class TestBBBB : MonoBehaviour
 	{
 		Config.Instance.AddMethodMapPair("GetSum2",Config.Instance.GetSum);
 		Debug.Log("test begin:");
-		IDictionary<string, Parameter> parameters = new Dictionary<string, Parameter>();
+	    ReactiveDictionary<string, Parameter> parameters = new ReactiveDictionary<string, Parameter>();
 		Parameter parameter = new JL.Parameter<int>();
 		parameter.Value = new ReactiveProperty<object>();
 		parameter.Value.Value = 15;

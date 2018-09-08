@@ -17,7 +17,7 @@ namespace JL
 			Source.Value = parameter;
 		}
 
-		public object GetReference()
+		public object GetRef()
 		{
 			return this;
 		}

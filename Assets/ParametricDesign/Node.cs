@@ -39,6 +39,11 @@ namespace JL
 			Parameters.Remove(name);
 		}
 
+	    public void Dispose()
+	    {
+            _script.Dispose();
+	    }
+
 	}
 
 }

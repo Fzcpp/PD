@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoCore
+public class AoCore : AoPackage
 {
 
 	public static readonly AoCore Singleton = new AoCore();
