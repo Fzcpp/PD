@@ -9,7 +9,9 @@ public class UiMain : MonoBehaviour
 
 	public NodeLibraryView NodeLibraryView;
 
-	public GraphView GraphView;
+	public List<GraphView> GraphViewList;
+
+	public GraphManagerView GraphManagerView;
 
 	void Awake()
 	{
