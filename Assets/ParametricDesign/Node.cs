@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 
@@ -8,13 +9,11 @@ namespace JL
 	public class Node
 	{
 
+		public event Action onScriptExecuted;
+
 		public IReactiveDictionary<string, Parameter> Parameters = new ReactiveDictionary<string, Parameter>();
 
 		public IReactiveProperty<string> Script = new StringReactiveProperty();
-
-		public IReactiveProperty<Parameter> ResultParameter = new ReactiveProperty<Parameter>();
-
-		public List<View> Views;
 
 		private readonly Script _script;
 
@@ -27,7 +26,7 @@ namespace JL
 		public void Execute()
 		{
 			_script.Execute();
-			UpdateView();
+			onScriptExecuted?.Invoke();
 		}
 
 		public bool AddParameter(string name, Parameter parameter)
@@ -49,11 +48,6 @@ namespace JL
 		public List<Node> GetTargets()
 		{
 			return Parameters.Select(t => t.Value.Node).ToList();
-		}
-
-		public void UpdateView()
-		{
-			
 		}
 
 		public void Dispose()

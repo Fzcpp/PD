@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeView : MonoBehaviour {
+public class ConsoleWindowView : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -9,7 +9,7 @@ namespace JL
 	public class Script
 	{
 
-		private IReactiveDictionary<string, Parameter> _parameters;
+		private readonly IReactiveDictionary<string, Parameter> _parameters;
 
 		public readonly LuaState _luaState = new LuaState();
 

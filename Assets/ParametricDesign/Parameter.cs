@@ -3,14 +3,10 @@
 namespace JL
 {
 
-	
-
 	public abstract class Parameter
 	{
 
 		public Node Node;
-
-		public abstract ViewType ViewType { get; }
 		public IReactiveProperty<Parameter> Source = new ReactiveProperty<Parameter>();
 		public IReactiveCollection<Parameter> Targets = new ReactiveCollection<Parameter>();
 		public IReactiveProperty<object> Value = new ReactiveProperty<object>();
@@ -43,8 +39,6 @@ namespace JL
 	{
 
 		public new IReactiveProperty<T> Value => base.Value as IReactiveProperty<T>;
-
-		public override ViewType ViewType => ViewTypeJudger.GetViewType(Value);
 		
 	}
 
