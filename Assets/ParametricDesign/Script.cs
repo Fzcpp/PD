@@ -83,7 +83,6 @@ namespace JL
 		private void OnRemoveParameter(DictionaryRemoveEvent<string, Parameter> parameterRemoveEvent)
 		{
 		    UnregisterParameter(parameterRemoveEvent.Key);
-
 		}
 
 		private void OnAddAoPackage(CollectionAddEvent<AoPackage> aoPackageAddEvent)
