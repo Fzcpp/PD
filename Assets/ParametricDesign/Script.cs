@@ -73,6 +73,7 @@ namespace JL
 		private void UnregisterParameter(string name)
 		{
 		    string getRef = "GetRef_" + name;
+		
 		    _luaState.DoString(getRef + "=nil");
 		    _luaState.DoString(name + "=nil");
 		}
@@ -123,7 +124,9 @@ namespace JL
 		public void Execute()
 		{
 			_luaState.DoString(Content);
-			_luaState.DoString("print('lua execute completed')");
+			_luaState.DoString("X=fanzheng:GetValue()");
+			_luaState.DoString("a = type(X)");
+			_luaState.DoString("print(a)");
 		}
 
 	}

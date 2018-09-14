@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -26,12 +27,25 @@ namespace JL
 		{
 			Parameter = NodeView.Node.Parameters[Name];
 			Parameter.Value.Value = Value;
-			Parameter.Value.Subscribe(x => { Value = (int)x; });
+			Parameter.Value.Subscribe(x =>
+			{
+				Debug.Log("ValueChanged: " + x + "  " + x.GetType());
+				try
+				{
+					Value = int.Parse(x.ToString());
+				}
+				catch(Exception e)
+				{
+					Debug.Log(e);
+					return;
+				}
+				//Value = int.Parse((string)x);
+			});
 		}
 
 		private void Update()
 		{
-			if (Value != (int)Parameter.Value.Value)
+			if (Input.GetKeyDown(KeyCode.Space))
 			{
 				Parameter.Value.Value = Value;
 			}

@@ -236,6 +236,7 @@ namespace LuaInterface
          */
         public object[] DoString(string chunk)
         {
+			//UnityEngine.Debug.LogError(chunk);
             return DoString(chunk, "chunk", null);
         }
 
