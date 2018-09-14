@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeLibraryView : MonoBehaviour
+namespace JL
 {
+	
+	public class NodeLibraryView : MonoBehaviour
+	{
 
-	public UiMain Parent;
+		public UiMain Parent;
 
-	public List< NodeTemplateView> NodeTemplateViewList;
+		public List<NodeTemplateView> NodeTemplateViewList;
+
+	}
 
 }

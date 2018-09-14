@@ -1,30 +1,40 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GraphView : MonoBehaviour
+namespace JL
 {
-
-	public UiMain Parent;
-
-	public List<NodeView> NodeViewList;
-
-	public List<ConnectionView> ConnectionViewList;
-
-	public Transform NodeParent;
-
-	private void Awake()
+	
+	public class GraphView : MonoBehaviour
 	{
-		NodeParent = transform.Find("Nodes");
-	}
 
-	public void AddNodeView(Node node = null)
-	{
-		if (node == null)
+		public UiMain Parent;
+
+		public List<NodeView> NodeViewList;
+
+		public List<ConnectionView> ConnectionViewList;
+
+		public Transform NodeParent;
+
+		private void Awake()
 		{
-			var nodeView = Instantiate(UiMain.Instance.NodePrefab).GetComponent<NodeView>();
-			nodeView.transform.SetParent(NodeParent, false);
-			NodeViewList.Add(nodeView);
+			NodeParent = transform.Find("Nodes");
 		}
+
+		public void AddNodeView(Node node = null)
+		{
+			if (node == null)
+			{
+				var nodeView = Instantiate(UiMain.Instance.NodePrefab).GetComponent<NodeView>();
+				nodeView.transform.SetParent(NodeParent, false);
+				NodeViewList.Add(nodeView);
+			}
+		}
+
+		public void AddConnection(ParameterView source, ParameterView target)
+		{
+
+		}
+
 	}
 
 }

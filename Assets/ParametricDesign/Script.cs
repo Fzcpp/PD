@@ -17,12 +17,13 @@ namespace JL
 
 		#region temp
 
-		private List<IDisposable> _disposables;
+		private readonly List<IDisposable> _disposables;
 
 		#endregion
 
 		public Script(IReactiveDictionary<string, Parameter> parameters)
 		{
+			_disposables = new List<IDisposable>();
 			_parameters = parameters;
 			_disposables.Add(_parameters.ObserveAdd().Subscribe(OnAddParameter));
 			_disposables.Add(_parameters.ObserveRemove().Subscribe(OnRemoveParameter));
@@ -40,6 +41,7 @@ namespace JL
 
 			foreach (var pair in _parameters)
 			{
+				UnityEngine.Debug.Log(pair.Key);
 				RegisterParameter(pair.Key, pair.Value);
 			}
 		}
@@ -121,6 +123,7 @@ namespace JL
 		public void Execute()
 		{
 			_luaState.DoString(Content);
+			_luaState.DoString("print('lua execute completed')");
 		}
 
 	}

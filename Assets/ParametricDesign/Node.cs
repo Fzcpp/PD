@@ -20,7 +20,10 @@ namespace JL
 		public Node()
 		{
 			_script = new Script(Parameters);
-			Script.Subscribe(x => { _script.Content = x; });
+			Script.Subscribe(x =>
+			{
+				_script.Content = x;
+			});
 		}
 
 		public void Execute()

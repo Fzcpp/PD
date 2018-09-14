@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeView : MonoBehaviour
+namespace JL
 {
 
-	public GraphView Parent;
+	public class NodeView : MonoBehaviour
+	{
 
-	public List<ParameterView> ParameterViewList;
+		public GraphView Parent;
 
-	public ScriptView ScriptView;
+		public List<ParameterView> ParameterViewList;
 
-	public ConsoleWindowView ConsoleWindowView;
+		public ScriptView ScriptView;
+
+		public ConsoleWindowView ConsoleWindowView;
+
+		public Node Node = new Node();
+
+		public NodeView()
+		{
+			Node.Parameters.Add("fanzheng",new Parameter<int>());
+			Node.Parameters.Add("sunzhao",new Parameter<int>());
+		}
+
+	}
 
 }

@@ -11,6 +11,17 @@ namespace JL
 		public IReactiveCollection<Parameter> Targets = new ReactiveCollection<Parameter>();
 		public IReactiveProperty<object> Value = new ReactiveProperty<object>();
 
+		protected Parameter()
+		{
+			Value.Subscribe(x =>
+			{
+				foreach (var parameter in Targets)
+				{
+					parameter.Value.Value = x;
+				}
+			});
+		}
+
 		public void SetSource(Parameter parameter)
 		{
 			Source.Value?.Targets.Remove(this);
